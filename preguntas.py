@@ -201,7 +201,7 @@ def pregunta_11():
     38   38      d,e
     39   39    a,d,f
     """
-    return
+    return 1
 
 
 def pregunta_12():
@@ -219,7 +219,7 @@ def pregunta_12():
     38   38                    eee:0,fff:9,iii:2
     39   39                    ggg:3,hhh:8,jjj:5
     """
-    return
+    return 1
 
 
 def pregunta_13():
@@ -236,4 +236,4 @@ def pregunta_13():
     E    275
     Name: _c5b, dtype: int64
     """
-    return
+    return 1
