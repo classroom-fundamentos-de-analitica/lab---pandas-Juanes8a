@@ -182,7 +182,7 @@ def pregunta_10():
     unidos = {g:":".join(sorted([str(x) for x in c])) for g,c in tabla.groups.items()}
 
     return pd.DataFrame({"_c1":unidos.keys(),"_c2":unidos.values()}).set_index("_c1")
-print(pregunta_10())
+
 
 def pregunta_11():
     """
@@ -200,7 +200,11 @@ def pregunta_11():
     38   38      d,e
     39   39    a,d,f
     """
-    return 1
+  
+    tabla = tbl1[["_c0","_c4"]].copy().set_index("_c4").groupby("_c0")
+    unidos = {g:",".join(sorted([str(x) for x in c])) for g,c in tabla.groups.items()}
+
+    return pd.DataFrame({"_c0":unidos.keys(),"_c4":unidos.values()}).set_index("_c0")
 
 
 def pregunta_12():
@@ -235,4 +239,6 @@ def pregunta_13():
     E    275
     Name: _c5b, dtype: int64
     """
-    return 1
+    union = pd.merge(tbl0,tbl2,sort=True)
+    agrupamiento = union.groupby("_c1").sum()
+    return agrupamiento["_c5b"]
