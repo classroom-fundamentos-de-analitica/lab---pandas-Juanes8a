@@ -204,8 +204,9 @@ def pregunta_11():
     tabla = tbl1[["_c0","_c4"]].copy().set_index("_c4").groupby("_c0")
     unidos = {g:",".join(sorted([str(x) for x in c])) for g,c in tabla.groups.items()}
 
-    return pd.DataFrame({"_c0":unidos.keys(),"_c4":unidos.values()}).set_index("_c0")
+    return pd.DataFrame({"_c0":unidos.keys(),"_c4":unidos.values()})
 
+#print(pregunta_11())
 
 def pregunta_12():
     """
