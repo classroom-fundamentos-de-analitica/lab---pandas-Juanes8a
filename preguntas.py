@@ -162,7 +162,7 @@ def pregunta_09():
     """
     tbl0["year"] = tbl0["_c3"].str.extract(r'(^[0-9]{4})')
     return tbl0    
-print(pregunta_09())
+
 
 def pregunta_10():
     """
@@ -178,12 +178,11 @@ def pregunta_10():
     3   D                  1:2:3:5:5:7
     4   E  1:1:2:3:3:4:5:5:5:6:7:8:8:9
     """
-    tbl0["_c1"] = tbl0["_c1"].values.astype(str)
-    print(type(tbl0["_c1"]))
-    tbl0["_c2"] = tbl0.groupby("_c1")["_c2"].transform(
-                                              lambda x: ':'.join(x))
-    return tbl0["_c2"]
+    tabla = tbl0[["_c1","_c2"]].copy().set_index("_c2").groupby("_c1")
+    unidos = {g:":".join(sorted([str(x) for x in c])) for g,c in tabla.groups.items()}
 
+    return pd.DataFrame({"_c1":unidos.keys(),"_c2":unidos.values()}).set_index("_c1")
+print(pregunta_10())
 
 def pregunta_11():
     """
