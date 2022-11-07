@@ -206,7 +206,7 @@ def pregunta_11():
 
     return pd.DataFrame({"_c0":unidos.keys(),"_c4":unidos.values()})
 
-#print(pregunta_11())
+
 
 def pregunta_12():
     """
@@ -223,7 +223,10 @@ def pregunta_12():
     38   38                    eee:0,fff:9,iii:2
     39   39                    ggg:3,hhh:8,jjj:5
     """
-    return 1
+    tbl2["_c5"] = tbl2["_c5a"] + ":" + tbl2["_c5b"].map(str)
+    tabla = tbl2[["_c0","_c5"]].copy().set_index("_c5").groupby("_c0")
+    unidos = {g:",".join(sorted([str(x) for x in c])) for g,c in tabla.groups.items()}
+    return pd.DataFrame({"_c0":unidos.keys(),"_c5":unidos.values()})
 
 
 def pregunta_13():
